@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import GifList from '../containers/GifList';
 
 export default class App extends Component {
   constructor(props) {
@@ -12,8 +13,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <input type="search" placeholder="enter search" onChange={(q) => this.setState({query: q})} />
-        <button onClick={() => this.props.onSearch(this.state.query)}>Search</button>
+        <div>
+          <input type="search" placeholder="enter search" onChange={(e) => this.setState({query: e.target.value})} />
+          <button onClick={() => this.props.onSearch(this.state.query)}>Search</button>
+        </div>
+        <GifList />
       </div>
     );
   };

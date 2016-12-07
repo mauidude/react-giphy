@@ -21,6 +21,7 @@ export function receivedSearch(gifs) {
 export function search(query) {
   return (dispatch) => {
     dispatch(requestSearch(query));
+    dispatch(receivedSearch([]));
 
     return fetch(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(query)}&api_key=dc6zaTOxFJmzC`)
       .then((response) => response.json())
