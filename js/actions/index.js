@@ -17,3 +17,14 @@ export function receivedSearch(gifs) {
     gifs
   };
 };
+
+export function search(query) {
+  return (dispatch) => {
+    dispatch(requestSearch(query));
+
+    return fetch(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(query)}&api_key=dc6zaTOxFJmzC`)
+      .then((response) => response.json())
+      .then((json) => dispatch(receivedSearch(json.data)))
+      .catch((err) => console.error('error:', err));
+  };
+};
